@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    triggers {
+        cron('* * * * *')
+    }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: "30"))
+    }
+    environment {
+        MERKELY_API_TOKEN = credentials('merkely-api')
+        GITHUB = credentials('github')
+        MERKELY_CLI_VERSION = "1.1.0"
+        MERKELY_ENVIRONMENT = "staging-k8s"
+    }
+    stages {
+        stage('Prepare') {
+            steps {
+                sh(
+                    label: 'Check enviroment variables',
+                    script: """
+                    echo "MERKELY_HOST:"
+                    echo $MERKELY_HOST
+                    echo "MERKELY_OWNER:"
+                    echo $MERKELY_OWNER
+                    """
+                )
+                sh(
+                    label: 'Download client',
+                    script: """
+                    wget https://github.com/merkely-development/cli/releases/download/v${env.MERKELY_CLI_VERSION}/merkely_${env.MERKELY_CLI_VERSION}_linux_amd64.tar.gz
+                    tar -xf merkely_${env.MERKELY_CLI_VERSION}_linux_amd64.tar.gz
+                    """
+                )
+            }
+        }
+        stage('Report environment') {
+            steps {
+                sh(
+                    label: 'Report environment to Merkely',
+                    script: """
+                    ./merkely environment report k8s -n default $MERKELY_ENVIRONMENT
+                    """
+                )
+            }
+        }
+    }
+}
