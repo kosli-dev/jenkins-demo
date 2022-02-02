@@ -8,7 +8,7 @@ https://jenkins.merkely.com/ is a Jenkins instance used to run the pipelines for
 
 ### Merkely
 
-There is *demo* organization at https://app.merkely.com/ - please reach out to us if can see that organization after loggin in.
+There is *demo* organization at https://app.merkely.com/ - please reach out to us if you can't see that organization after loggin in.
 
 ### Infrastructure
 
