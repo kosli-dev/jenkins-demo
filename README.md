@@ -21,7 +21,7 @@ The project we've created for this demo consists of [Dockerfile](Dockerfile) we 
 
 ## How to use Merkely with Jenkins
 
-In order to be able to communicate with Jenkins from your pipeline you need to you [Merkely CLI](https://github.com/merkely-development/cli). You can find latest version of the CLI under [Releases](https://github.com/merkely-development/cli/releases) - choose the one that fits your architecture.  
+In order to be able to communicate with Jenkins from your pipeline you need to download [Merkely CLI](https://github.com/merkely-development/cli). You can find latest version of the CLI under [Releases](https://github.com/merkely-development/cli/releases) - choose the one that fits your architecture.  
 If your prefer to use doocker image with CLI preinstalled you can find these under [Packages/merkely-cli](https://github.com/orgs/merkely-development/packages/container/package/merkely-cli)
 
 Documentation for latest released version of the CLI is always available at [docs.merkely.com](https://docs.merkely.com/)
