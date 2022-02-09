@@ -8,20 +8,23 @@ https://jenkins.merkely.com/ is a Jenkins instance used to run the pipelines for
 
 ### Merkely
 
-There is *demo* organization at https://app.merkely.com/ - please reach out to us if you can't see that organization after loggin in.
+There is *demo* organization at https://app.merkely.com/ - please reach out to us if you can't see that organization when logged in.
 
 ### Infrastructure
 
-Jenkins is hosted on a Virtual Machine in Merkely's Google Cloud. It runs in a docker container. Same VM serves as an only build agent for that Jenkins.  
+Jenkins is hosted on a Virtual Machine in Merkely's Google Cloud. It runs as a docker container. Same VM serves as the only build agent for that Jenkins.  
+
 In the same Google Cloud we set up k8s cluster and configured Jenkins VM's to be able to connect to that cluster ( `gcloud container clusters get-credentials (...)` ).
 
 ### Demo Project
 
 The project we've created for this demo consists of [Dockerfile](Dockerfile) we use to build the image and [k8s/deployment.yaml](k8s/deployment.yaml) we use to deploy it to our cluster.
 
+We're building a simple web server that display date and time of the last build of the project. Once the new version is deployed to the cluster it is available at [http://35.195.53.178/](http://35.195.53.178/)
+
 ## How to use Merkely with Jenkins
 
-In order to be able to communicate with Jenkins from your pipeline you need to download [Merkely CLI](https://github.com/merkely-development/cli). You can find latest version of the CLI under [Releases](https://github.com/merkely-development/cli/releases) - choose the one that fits your architecture.  
+In order to be able to communicate with Jenkins from your pipeline you need to download [Merkely CLI](https://github.com/merkely-development/cli). You can find the latest version of the CLI under [Releases](https://github.com/merkely-development/cli/releases) - choose the one that fits your architecture.  
 If your prefer to use doocker image with CLI preinstalled you can find these under [Packages/merkely-cli](https://github.com/orgs/merkely-development/packages/container/package/merkely-cli)
 
 Documentation for latest released version of the CLI is always available at [docs.merkely.com](https://docs.merkely.com/)
@@ -69,6 +72,7 @@ merkely pipeline artifact report creation ARTIFACT-NAME-OR-PATH [flags]
   -o, --owner string          The merkely user or organization.
   -v, --verbose              
 ```
+
 Some of the flags are optional (`description`), some are only required if another flag is not set (either `artifact-type` or `sha256`) but most you need to provide.  
 Once you start using Merkely you will quickly notice some of the flags ALWAYS have the same value (likely `api-token` and `owner`), some stay the same within one pipeline (likely `pipeline` or `artifact-type`).
 
