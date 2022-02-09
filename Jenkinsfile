@@ -143,6 +143,7 @@ pipeline {
             steps {
                 sh "docker rmi $DOCKER_IMAGE_NAME:$BUILD_NUMBER"
                 sh "docker rmi $DOCKER_IMAGE_NAME:latest"
+                sh "rm merkely_${env.MERKELY_CLI_VERSION}_linux_amd64.tar.gz*"
             }
         }
     }

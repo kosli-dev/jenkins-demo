@@ -41,6 +41,10 @@ pipeline {
                     ./merkely environment report k8s -n default $MERKELY_ENVIRONMENT
                     """
                 )
+                sh "pwd"
+                sh "ls -la"
+                sh "rm merkely_${env.MERKELY_CLI_VERSION}_linux_amd64.tar.gz*"
+                sh "ls -la"
             }
         }
     }
