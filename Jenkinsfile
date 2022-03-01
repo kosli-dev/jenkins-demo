@@ -106,7 +106,7 @@ pipeline {
                             --github-org merkely-development \
                             --github-token $DH_PASSWORD \
                             --repository jenkins-demo \
-                            date-and-time.txt
+                            $DOCKER_IMAGE_NAME:$BUILD_NUMBER
                         """
                     )   
                 }
