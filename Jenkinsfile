@@ -94,7 +94,7 @@ pipeline {
                         $DOCKER_IMAGE_NAME:$BUILD_NUMBER
                     """
                 )
-                
+                // creating a branch and a PR to verify if PR reporting works as it should
                 withCredentials([usernamePassword(credentialsId: 'github-pat', usernameVariable: 'DH_USERNAME', passwordVariable: 'DH_PASSWORD')]) {
                     sh(
                         label: 'Report pull request',
