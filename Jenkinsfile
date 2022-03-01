@@ -105,7 +105,7 @@ pipeline {
                             --commit ${GIT_COMMIT} \
                             --github-org merkely-development \
                             --github-token $DH_PASSWORD \
-                            --repository jenkins-demo
+                            --repository jenkins-demo \
                             date-and-time.txt
                         """
                     )   
