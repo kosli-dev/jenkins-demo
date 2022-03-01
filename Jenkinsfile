@@ -3,7 +3,7 @@ pipeline {
     environment {
         MERKELY_API_TOKEN = credentials('merkely-api')
         GITHUB = credentials('github')
-        MERKELY_CLI_VERSION = "1.1.0"
+        MERKELY_CLI_VERSION = "1.4.1"
         MERKELY_PIPELINE = "docker-test"
         MERKELY_ENVIRONMENT = "staging-k8s"
 
@@ -94,18 +94,22 @@ pipeline {
                         $DOCKER_IMAGE_NAME:$BUILD_NUMBER
                     """
                 )
-                /*
-                sh(
-                    label: 'Report pull request',
-                    script: """
-                    ./merkely pipeline artifact report evidence pullrequest --artifact-type file \
-                        --build-url $BUILD_URL \
-                        --evidence-type "pull-request" \
-                        --provider github \
-                        date-and-time.txt
-                    """
-                )
-                */
+                
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-pat', usernameVariable: 'DH_USERNAME', passwordVariable: 'DH_PASSWORD')]) {
+                    sh(
+                        label: 'Report pull request',
+                        script: """
+                        ./merkely pipeline artifact report evidence github-pullrequest --artifact-type file \
+                            --build-url $BUILD_URL \
+                            --evidence-type "pull-request" \
+                            --commit ${GIT_COMMIT} \
+                            --github-org merkely-development \
+                            --github-token $DH_PASSWORD \
+                            --repository jenkins-demo
+                            date-and-time.txt
+                        """
+                    )   
+                }
             }
         }
 
