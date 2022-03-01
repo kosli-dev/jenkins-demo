@@ -99,7 +99,7 @@ pipeline {
                     sh(
                         label: 'Report pull request',
                         script: """
-                        ./merkely pipeline artifact report evidence github-pullrequest --artifact-type file \
+                        ./merkely pipeline artifact report evidence github-pullrequest --artifact-type docker \
                             --build-url $BUILD_URL \
                             --evidence-type "pull-request" \
                             --commit ${GIT_COMMIT} \
