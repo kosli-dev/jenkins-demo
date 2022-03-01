@@ -95,7 +95,7 @@ pipeline {
                     """
                 )
                 
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-pat', usernameVariable: 'DH_USERNAME', passwordVariable: 'DH_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'github-pat', usernameVariable: 'DH_USERNAME', passwordVariable: 'DH_PASSWORD')]) {
                     sh(
                         label: 'Report pull request',
                         script: """
