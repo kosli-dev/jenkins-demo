@@ -134,7 +134,7 @@ pipeline {
             }
             steps {
                 sh(
-                    label: 'Verify approval'
+                    label: 'Verify approval',
                     script: """
                     ./merkely pipeline approval assert \
                         --artifact-type docker \
