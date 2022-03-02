@@ -142,7 +142,7 @@ pipeline {
                         $DOCKER_IMAGE_NAME:$BUILD_NUMBER
                     """
                 )
-                sh "sed -i \'s/$IMAGE_NAME/$IMAGE_NAME:$BUILD_NUMBER/g\' k8s/deployment.yaml"
+                sh "sed -i \'s/$IMAGE_NAME/$IMAGE_NAME:$BUILD_NUMBER/g\' k8s/deployment-2.yaml"
                 sh(
                     label: 'Report deployment',
                     script: """
