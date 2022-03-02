@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mytime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mytime
+  template:
+    metadata:
+      labels:
+        app: mytime
+    spec:
+      containers:
+      - name: mytime
+        image: ewelinawilkosz/time-server-2
+        ports:
+        - containerPort: 80
