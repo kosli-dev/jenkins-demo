@@ -115,7 +115,8 @@ pipeline {
 
         stage('Request approval') {
             environment {
-                MERKELY_OLDEST_COMMIT = "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+                // MERKELY_OLDEST_COMMIT = "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
+                MERKELY_OLDEST_COMMIT = "84a4551597c5b81d65be59a31415e1a511a34fcc"
                 MERKELY_NEWEST_COMMIT = "${env.GIT_COMMIT}"
                 MERKELY_DESCRIPTION = "Approval requested by Jenkins job ${BUILD_URL}"
             }
