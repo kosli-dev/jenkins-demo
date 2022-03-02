@@ -40,13 +40,7 @@ pipeline {
                     ./merkely pipeline declare --description "testing new cli from Jenkins" --template artifact,unit-test,pull-request
                     """
                 )
-                // Example with different evidence template
-                // sh(
-                //     label: 'Create a pipeline',
-                //     script: """
-                //     ./merkely pipeline declare --description "testing new cli from Jenkins" --template artifact,unit-test,pull-request
-                //     """
-                // )
+
                 sh(
                     label: 'Create an environment',
                     script: """
