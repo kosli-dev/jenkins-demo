@@ -115,8 +115,7 @@ pipeline {
 
         stage('Request approval') {
             environment {
-                // MERKELY_OLDEST_COMMIT = "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
-                MERKELY_OLDEST_COMMIT = "84a4551597c5b81d65be59a31415e1a511a34fcc"
+                MERKELY_OLDEST_COMMIT = "${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
                 MERKELY_NEWEST_COMMIT = "${env.GIT_COMMIT}"
                 MERKELY_DESCRIPTION = "Approval requested by Jenkins job ${BUILD_URL}"
             }
@@ -146,7 +145,7 @@ pipeline {
                 sh(
                     label: 'Report deployment',
                     script: """
-                    cat k8s/deployment.yaml
+                    cat k8s/deployment-2.yaml
                     gcloud container clusters get-credentials merkely-dev --region europe-west1 --project cellular-deck-259216
                     kubectl apply -f k8s/deployment-2.yaml
                     ./merkely pipeline deployment report --artifact-type docker --build-url $BUILD_URL $DOCKER_IMAGE_NAME:$BUILD_NUMBER
