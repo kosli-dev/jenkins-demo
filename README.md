@@ -123,3 +123,5 @@ Some parameters will be differen for each run, like commit sha and build url - J
 Look around both Jenkinsfiles in this repository to see how we used environment variables in out setup.
 
 ### Basic workflow
+
+[TODO]
