@@ -125,5 +125,9 @@ Look around both Jenkinsfiles in this repository to see how we used environment 
 ### Basic workflow
 
 [TODO]
+* Build
+* Test
+* Approve
+* Deploy
 
 
