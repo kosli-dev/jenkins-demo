@@ -132,4 +132,4 @@ There are two workflows:
 * Deploy
 * [pull request]
 
-There is an optional approval control
+There is an optional approval control ...
